@@ -1,13 +1,17 @@
 #include <stdio.h>
 
-encryption(char message[], key);
+//encryption(char message[], int key);
 
 int main(){
 
-char messages[3] = {'s', 'a, 's'};
+char message[] = {'s', 'a', 's'};
+int key = 1;
+char encription[1];
 
 
-//WHO IS THAT!!!!
+encription[1] = message[0] + key;
+
+printf("%c ", encription[1]);
 
 return 0;
 }
