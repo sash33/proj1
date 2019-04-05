@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+//encryption(char message[], int key);
+
+int main(){
+
+char message[] = {'s', 'a', 's', 'c', 'h', 'a'};
+
+int key = 1;
+char encription[6];
+int size = 6;
+
+
+//char message[] = char message
+for(int i=0; i<size; i++){
+    
+    encription[i] = message[i] - key;
+    
+    
+    if(encription[i] < 97){
+       encription[i] = 122;
+    }  
+    
+    printf("%c ", encription[i]);
+    
+
+
+}
+
+//printf("%c %c %c ", encription[0], encription[1], encription[2]);
+
+return 0;
+}
