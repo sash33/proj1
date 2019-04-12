@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <unistd.h>
+
+int main(){
+int key = 1;
+char message[] = {'y', /*'b', 'c', 'd', 'e', 'f', 'g', 'h', 'u', 'w', 'x', 'y',*/ 'z'};
+char encripted[6];
+
+int size = sizeof(message)/sizeof(char);
+
+//OK THIS ONLY GOES IN one direction  122 
+for(int i=0; i<size; i++){
+
+    //shifts within Alphabet
+    if(message[i] + key < 'z' && message[i] + key > 'a'){
+        encripted[i] = message[i] + key;
+    }
+    
+    //shifts going negative below 'a wrapping towards 'z'
+    if(message[i] + key < 'a'){
+        encripted[i] = message[i] - key+26;
+    }
+    
+   // letter[i] = message[i] + key;
+    //shifts going past z to the beginning
+    if(message[i] + key > 122){
+        encripted[i] = message[i] + key-26;
+    }
+    
+    printf("%c ", encripted[i]);
+    //then do other direction with enctiption - key
+    //printf("%c ", encription[i]);
+}
+return 0;
+}
