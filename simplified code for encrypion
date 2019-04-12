@@ -4,14 +4,20 @@
 int main(){
     //#include <string.h> TO USE strupr(string) to convert to upper case letters
     //test for git commit working
-int key =-10;
-char message[] = "SASCHA";/*{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'U', 'W', 'X', 'Y', 'Z'};*/
-char encripted[100];
+int key =0;
+char message[] = " SO MANY SPACES ";/*{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'U', 'W', 'X', 'Y', 'Z'};*/
+//char encripted[100];
 int direction;
 int size = sizeof(message)/sizeof(char);
+char encripted[size];
 
         for(int i=0; i<size; i++){
-
+            
+            if(message[i] == 32){//set that message index to print a space...
+                message[i] = 0;
+                encripted[i] = message[i];
+            }
+            
             //shifts within Alphabet
             if(message[i] + key >= 'A' && message[i] + key <= 'Z'){
                 encripted[i] = message[i] + key;
