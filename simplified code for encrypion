@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <unistd.h>
+
+int main(){
+    //#include <string.h> TO USE strupr(string) to convert to upper case letters
+    //test for git commit working
+int key =2;
+char message[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'U', 'W', 'X', 'Y', 'Z'};
+char encripted[26];
+int direction;
+int size = sizeof(message)/sizeof(char);
+        for(int i=0; i<size; i++){
+
+            //shifts within Alphabet
+            if(message[i] + key >= 'A' && message[i] + key <= 'Z'){
+                encripted[i] = message[i] + key;
+                
+            } else if(message[i] + key > 'Z'){
+                encripted[i] = message[i] + key - 26;
+                
+            }else /*if(message[i] + key < 'A')*/{
+                encripted[i] = message[i] + key + 26;
+            }
+
+ printf("%c ", encripted[i]);
+}
+}
