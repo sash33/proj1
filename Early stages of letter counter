@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main()
+{
+    
+    char message[] = "ABBCCCDDDDEEEEE";
+    int size = 14;
+    
+    char test = ' ';
+    int f=0;
+    
+    for(char l='E'; l<='E'; l++){
+        test=l;
+      
+    for(int i=0; i<=size; i++){
+        if(message[i] == test){
+             //store values
+             f++;
+        }
+    }
+    printf("%c is used: %d times\n",test, f);
+    }
+    
+}
