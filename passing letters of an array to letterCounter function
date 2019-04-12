@@ -1,0 +1,32 @@
+#include <stdio.h>
+int letterCounter(char message[]);
+int main()
+{
+    int size = 14;
+    char message[] = "ABBCCCDDDDEEEEE";
+    int result=0;
+    
+    //for (int x=0; x<=size; x++){
+        //char letter = message[x];
+        
+        result = letterCounter('A');
+        printf("%d", result);
+    //}
+    
+    //char test = ' ';
+    
+int letterCounter(char message[]){
+    int size = 14;
+    char test = 'E';
+    int f=0;
+        
+        for(int i=0; i<=size; i++){
+            if(message[i] == test){
+            f++;
+            }
+        }
+    //printf("%c is used: %d times\n",test, f);
+    return f;
+}
+return 0;
+}
