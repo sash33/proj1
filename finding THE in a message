@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main()
 {
-    char message[] = "ONTHE SISDOG"; 
+    char message[] = "THE BEEG TEST"; 
     int key;
     char word[3] = "THE";
     int length = 11;
@@ -26,5 +26,6 @@ int main()
       }
     printf("\nno T has been found and i is: %d", i);
     }
+    //check for other words and increment a variable eg match +1 every time a word is found if math ==3 then its the right key...
     return 0;
 }
