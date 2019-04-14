@@ -1,15 +1,14 @@
 #include <stdio.h>
-
 int main()
 {
     char message[] = "ONTHE SISDOG"; 
     int key;
     char word[3] = "THE";
     int length = 11;
-    printf("%s", message);
+    printf("the key shift to be tested is: %s", message);
     for(int i=0;i<=length;i++){
 
-      if(message[i]=='T'){
+      if(message[i]=='T'){//finds THE with white space after
         i++;
         printf("\nT is found and i is: %d", i);
         if(message[i]=='H'){
