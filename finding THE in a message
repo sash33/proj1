@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main()
+{
+    char message[] = "ONTHE SISDOG"; 
+    int key;
+    char word[3] = "THE";
+    int length = 11;
+    printf("%s", message);
+    for(int i=0;i<=length;i++){
+
+      if(message[i]=='T'){
+        i++;
+        printf("\nT is found and i is: %d", i);
+        if(message[i]=='H'){
+          i++;
+          printf("\nH is found and i is: %d", i);
+          if(message[i]=='E'){
+            i++;
+            printf("\nTHE has been found now checking for white space...i is %d",i);
+            
+          }if(message[i]==32){
+              printf("\nTHE has been found now breaking...");
+              break;
+          }
+        }
+      }
+    printf("\nno T has been found and i is: %d", i);
+    }
+    return 0;
+}
