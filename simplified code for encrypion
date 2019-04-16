@@ -2,32 +2,32 @@
 #include <unistd.h>
 
 int main(){
-    //#include <string.h> TO USE strupr(string) to convert to upper case letters
+    //#include <string.h> TO USE strupr(string) to convert to upper case letters so dont have to add lower code to ifs
     //test for git commit working
-int key =0;
-char message[] = " SO MANY SPACES ";/*{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'U', 'W', 'X', 'Y', 'Z'};*/
+    
+int key =-7;
+char message[] = "TVU TVAOTH: AOL KHAH IYVBNOA AV BZ IF AOL IVAOHU";/*{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'U', 'W', 'X', 'Y', 'Z'};*/
 //char encripted[100];
-int direction;
+int direction;//dont need...
 int size = sizeof(message)/sizeof(char);
 char encripted[size];
 
         for(int i=0; i<size; i++){
             
-            if(message[i] == 32){//set that message index to print a space...
-                message[i] = 0;
-                encripted[i] = message[i];
-            }
-            
+        if(message[i] == 32){//set that message index to print a space...
+            message[i] = 0;
+            encripted[i] = message[i];
+        }
             //shifts within Alphabet
-            if(message[i] + key >= 'A' && message[i] + key <= 'Z'){
-                encripted[i] = message[i] + key;
+        if(message[i] + key >= 'A' && message[i] + key <= 'Z'){
+            encripted[i] = message[i] + key;
                 
-            }else if(message[i] + key > 'Z'){
-                encripted[i] = message[i] + key - 26;
+        }else if(message[i] + key > 'Z'){
+            encripted[i] = message[i] + key - 26;
                 
-            }else /*if(message[i] + key < 'A')*/{
-                encripted[i] = message[i] + key + 26;
-            }
+        }else /*if(message[i] + key < 'A')*/{
+            encripted[i] = message[i] + key + 26;
+        }
 
         printf("%c ", encripted[i]);
         }
