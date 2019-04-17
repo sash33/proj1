@@ -2,14 +2,14 @@
 #include <unistd.h>
 
 //#include <string.h> TO USE strupr(string) to convert to upper case letters so dont have to add lower code to ifs
-//  1.make into functions 2.make them run in che  3.impliment file/io is key allowed to be negative? should stop user from entering negative?
+//  1.make into TESSSTTTT functions 2.make them run in che  3.impliment file/io is key allowed to be negative? should stop user from entering negative?
 //check for symbols such as ! and keep them the same
 char rotationEnc(char message[], int size, int key);
 
 int main(){
     
 int key=0;
-char message[] = "saschaandgabe";
+char message[] = "NEwmEssAge";
 
 
 /********************************************************/
