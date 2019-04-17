@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <unistd.h>
+char substitutionEnc(char letter);
+int main(){
+    
+char message[] = "TESTING: !#?";
+int size = sizeof(message)-1;     
+
+//Sanitises input 
+for(int i=0; i<size;i++){                    
+    if (message[i]>=97 && message[i]<=122) {
+        message[i] -= 32; 
+    }
+}
+for(int i=0; i<=size; i++){
+    printf("%c ", substitutionEnc(message[i]));
+}
+
+
+return 0;
+}
+char substitutionEnc(char letter){
+    
+switch(letter){
+    case 65: letter = 66; break;
+    case 66: letter = 67; break;
+    case 67: letter = 68; break;
+    case 68: letter = 69; break;
+    case 69: letter = 70; break;
+    case 70: letter = 71; break;
+    case 71: letter = 72; break;
+    case 72: letter = 73; break;
+    case 73: letter = 74; break;
+    case 74: letter = 75; break;
+    case 75: letter = 76; break;
+    case 76: letter = 77; break;
+    case 77: letter = 89; break;
+    case 78: letter = 69; break;
+    case 79: letter = 69; break;
+    case 80: letter = 70; break;
+    case 81: letter = 70; break;
+    case 82: letter = 70; break;
+    case 83: letter = 67; break;
+    case 84: letter = 89; break;
+    case 85: letter = 87; break;
+    case 86: letter = 80; break;
+    case 87: letter = 89; break;
+    case 88: letter = 90; break;
+    case 89: letter = 89; break;
+    case 90: letter = 69; break;
+} 
+return letter;
+}
