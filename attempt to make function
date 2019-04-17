@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <unistd.h>
+
+//#include <string.h> TO USE strupr(string) to convert to upper case letters so dont have to add lower code to ifs
+//  1.make into functions 2.make them run in che  3.impliment file/io is key allowed to be negative? should stop user from entering negative?
+//check for symbols such as ! and keep them the same
+char rotationEnc(char message[], int size, int key);
+
+int main(){
+    
+int key=0;
+char message[] = "saschaandgabe";
+
+
+/********************************************************/
+int size = sizeof(message)/sizeof(char);
+char encripted[size];//declaring encripted letter storage place
+
+for(int i=0; i<size; i++){
+   if(message[i]>=97&&message[i]<=122) 
+        message[i] -= 32;
+}
+/********************************************************/
+rotationEnc(message[0], size, key);
+
+    return 0;
+}
+
+char rotationEnc(char message[], int size, int key){
+    char encripted[1];
+    for(int i=0; i<size; i++){
+            
+    if(message[]==32){
+        message[]=0;
+        encripted[]=message[i];
+    }
+        if(message[]+key>='A'&&message[]+key<='Z'){
+            encripted[] = message[] + key;
+                
+        }else if(message[i]+key>'Z'){
+            encripted[] = message[] + key - 26;
+                
+        }else{
+        encripted[]=message[]+key+26;
+}
+
+return encripted[i]);
+}
+return 0;
+}
