@@ -7,19 +7,15 @@
  */
 char rotationEnc(char letter, int key);
 char substitutionEnc(char letter);
+int setKey();
 
 int main(){
-
+int choice=0;
+int key=0;
 printf("WELCOME TO SOME INTERESTING CIPHERS - I HOPE YOU ENJOY!");
 //User input for message into array
 char message[] = "TESTING: !#?";
 int size = sizeof(message)-1;     
-
-//User input for key
-int key;
-printf("\nenter the key");
-scanf("\n%d", &key);
-printf("%d ", key);
 
 /* Sanitises input */
 for(int i=0; i<size;i++){                    
@@ -27,44 +23,57 @@ for(int i=0; i<size;i++){
         message[i] -= 32; 
     }
 }
-int choice=0;
 
-    while(choice!=5){
-        printf("\nPlease enter a number to select an option");
-        printf("\n 1- encription with a rotation cipher.    2- encription with a substitution cipher.   5- quit");
-        scanf("\n%d ", &choice);
-        printf("Your choice is : %d", choice);
-        switch(choice){
-            case 1: 
-                //calling encriptionEnc
-                for(int i=0; i<size;i++) {
-                    
-                    if (message[i] <= 'Z' && message[i] >= 'A') {
-                        printf("%c", rotationEnc(message[i], key));
-                    }else{
-                        printf("%c", message [i]);
-                    }  
-                }
-                break;
-
-            case 2:
-                //calling substitutionEnc
-                for(int i=0; i<=size; i++){
-                printf("%c ", substitutionEnc(message[i]));
-                }
-                break;
+while(choice!=5){
+    printf("\nPlease enter a number to select an option");
+    printf("\n 1- rotation encription.    2- substitution encription.   5- quit");
+    scanf("%d ", &choice);
+    printf("\nYour choice is : %d", choice);
+    
+    switch(choice){
+        case 1: 
+            //calling encriptionEnc
+            key = setKey();
             
-            case 5:
-                return 0;
+            for(int i=0; i<size;i++) {
+                    
+                if (message[i] <= 'Z' && message[i] >= 'A') {
+                    printf("%c", rotationEnc(message[i], key));
+                }else{
+                    printf("%c", message [i]);
+                }  
             }
+            break;
 
+        case 2:
+            //calling substitutionEnc
+            for(int i=0; i<=size; i++){
+                printf("%c ", substitutionEnc(message[i]));
+            }
+            break;
+            
+        case 5:
+        return 0;
     }
+
+}
 return 0;
 } 
 
+
+/********SET KEY******************************************/
+int setKey(){
+    int key;
+    printf("\nEnter key: ");
+    scanf("%d ", &key);
+return key;
+}
+
+
+
 /*****FUNCTION for rotation encryption****************************/ 
 char rotationEnc(char letter, int key) {
-    //int key=1;
+        
         if(letter == 32){
             letter = 32;      
         }else if(letter + key >= 'A' && letter + key <= 'Z'){
@@ -111,5 +120,6 @@ switch(letter){
     case 89: letter = 89; break;
     case 90: letter = 69; break;
 } 
+
 return letter;
 }
