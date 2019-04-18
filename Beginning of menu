@@ -16,7 +16,7 @@ int key=0;
 printf("WELCOME TO SOME INTERESTING CIPHERS - I HOPE YOU ENJOY!");
 //User input for message into array
 char message[] = "TESTING: !#?";
-char emessage[] = "UFTUJOH: !#?";//encrypted message to be decrypted
+//char emessage[] = "UFTUJOH: !#?";//encrypted message to be decrypted
 int size = sizeof(message)-1;     
 
 /* Sanitises input */
@@ -32,7 +32,7 @@ while(choice!=5){
     
 
     scanf("%d ", &choice);
-    printf("\nYour choice is : %d", choice);
+    printf("\nYour choice is : %d\n", choice);
 
 
     switch(choice){
@@ -102,11 +102,11 @@ return letter;
 }
 
 /****Function for rotation decryption****************************/
-char rotationDec(char letter, int key){
+/*char rotationDec(char letter, int key){
     //should work off emessage and take the old or new key?
     
     
-}
+}*/
 
 /*****Function for substitution encription***********************/
 char substitutionEnc(char letter){
