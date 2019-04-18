@@ -6,8 +6,8 @@
  * 
  */
 char rotationEnc(char letter, int key);
-char rotationDec(char letter, int key);
 char substitutionEnc(char letter);
+char rotationDec(char letter, int key);
 int setKey();
 
 int main(){
