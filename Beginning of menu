@@ -6,6 +6,7 @@
  * 
  */
 char rotationEnc(char letter, int key);
+char rotationDec(char letter, int key);
 char substitutionEnc(char letter);
 int setKey();
 
@@ -15,6 +16,7 @@ int key=0;
 printf("WELCOME TO SOME INTERESTING CIPHERS - I HOPE YOU ENJOY!");
 //User input for message into array
 char message[] = "TESTING: !#?";
+char emessage[] = "UFTUJOH: !#?";//encrypted message to be decrypted
 int size = sizeof(message)-1;     
 
 /* Sanitises input */
@@ -25,14 +27,17 @@ for(int i=0; i<size;i++){
 }
 
 while(choice!=5){
-    printf("\nPlease enter a number to select an option");
+    //printf("\nPlease enter a number to select an option");
     printf("\n 1- rotation encription.    2- substitution encription.   5- quit");
+    
+
     scanf("%d ", &choice);
     printf("\nYour choice is : %d", choice);
-    
+
+
     switch(choice){
         case 1: 
-            //calling encriptionEnc
+            //calling rotationEnc     THE ENCRYPTED MESSAGE SHOULD BE STORED IN emessage INSTEAD OF BEING PRINTED
             key = setKey();
             
             for(int i=0; i<size;i++) {
@@ -51,17 +56,24 @@ while(choice!=5){
                 printf("%c ", substitutionEnc(message[i]));
             }
             break;
+        case 3:
+            //calling rotationDec
             
+            break;
+        case 4:
+            //calling substitutionDec
+            
+            break;
         case 5:
         return 0;
     }
-
 }
+
 return 0;
 } 
 
 
-/********SET KEY******************************************/
+/********SET KEY**************************************************/
 int setKey(){
     int key;
     printf("\nEnter key: ");
@@ -87,6 +99,13 @@ char rotationEnc(char letter, int key) {
         }
 
 return letter;
+}
+
+/****Function for rotation decryption****************************/
+char rotationDec(char letter, int key){
+    //should work off emessage and take the old or new key?
+    
+    
 }
 
 /*****Function for substitution encription***********************/
