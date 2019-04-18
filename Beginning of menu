@@ -16,13 +16,19 @@ int key=0;
 printf("WELCOME TO SOME INTERESTING CIPHERS - I HOPE YOU ENJOY!");
 //User input for message into array
 char message[] = "TESTING: !#?";
-//char emessage[] = "UFTUJOH: !#?";//encrypted message to be decrypted
+char emessage[] = "UFTUJOH: !#?";//encrypted message to be decrypted, maybe decrypt the encripted messsage
 int size = sizeof(message)-1;     
 
-/* Sanitises input */
+/* Sanitises input */  //could also put into function...
 for(int i=0; i<size;i++){                    
     if (message[i]>=97 && message[i]<=122) {
         message[i] -= 32; 
+    }
+}
+//sanitising emessage
+for(int i=0; i<size;i++){                    
+    if (emessage[i]>=97 && emessage[i]<=122) {
+        emessage[i] -= 32; 
     }
 }
 
@@ -36,8 +42,7 @@ while(choice!=5){
 
 
     switch(choice){
-        case 1: 
-            //calling rotationEnc     THE ENCRYPTED MESSAGE SHOULD BE STORED IN emessage INSTEAD OF BEING PRINTED
+        case 1: //calling rotationEnc     THE ENCRYPTED MESSAGE SHOULD BE STORED IN emessage INSTEAD OF BEING PRINTED
             key = setKey();
             
             for(int i=0; i<size;i++) {
@@ -50,20 +55,28 @@ while(choice!=5){
             }
             break;
 
-        case 2:
-            //calling substitutionEnc
-            for(int i=0; i<=size; i++){
+        case 2: //calling substitutionEnc
+            for(int i=0; i<=size; i++){//size of what?
                 printf("%c ", substitutionEnc(message[i]));
             }
             break;
-        case 3:
-            //calling rotationDec
+            
+        case 3: //calling rotationDec
+            key = setKey();
+            for(int i=0; i<size; i++){
+                if (emessage[i] <= 'Z' && emessage[i] >= 'A') {
+                    printf("%c", rotationEnc(emessage[i], key));
+                }else{
+                    printf("%c", emessage [i]);
+                }  
+            }
+            break;
+            
+        case 4: //calling substitutionDec
+            
             
             break;
-        case 4:
-            //calling substitutionDec
             
-            break;
         case 5:
         return 0;
     }
@@ -102,11 +115,24 @@ return letter;
 }
 
 /****Function for rotation decryption****************************/
-/*char rotationDec(char letter, int key){
+char rotationDec(char letter, int key){
     //should work off emessage and take the old or new key?
     
+    if(letter == 32){
+            letter = 32;      
+        }else if(letter + key >= 'A' && letter + key <= 'Z'){
+            letter += key;
+
+        }else if(letter + key > 'Z'){
+            letter += key - 26;
+
+        }else{
+            letter += key + 26;
+        }
+
+return letter;
     
-}*/
+}
 
 /*****Function for substitution encription***********************/
 char substitutionEnc(char letter){
