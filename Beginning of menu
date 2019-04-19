@@ -9,6 +9,7 @@ char rotationEnc(char letter, int key);
 char substitutionEnc(char letter);
 char rotationDec(char letter, int key);
 int setKey();
+char makeUpper(char letter);
 
 int main(){
 int choice=0;
@@ -19,18 +20,17 @@ char message[] = "TESTING: !#?";
 char emessage[] = "UFTUJOH: !#?";//encrypted message to be decrypted, maybe decrypt the encripted messsage
 int size = sizeof(message)-1;     
 
-/* Sanitises input */  //could also put into function...
+//Sanitise to make UPPER case
 for(int i=0; i<size;i++){                    
-    if (message[i]>=97 && message[i]<=122) {
-        message[i] -= 32; 
-    }
+    makeUpper(message[i]);
 }
 //sanitising emessage
 for(int i=0; i<size;i++){                    
-    if (emessage[i]>=97 && emessage[i]<=122) {
-        emessage[i] -= 32; 
-    }
+    makeUpper(emessage[i]);
 }
+
+
+   
 
 while(choice!=5){
     //printf("\nPlease enter a number to select an option");
@@ -84,8 +84,15 @@ while(choice!=5){
 
 return 0;
 } 
+/************Make the message upper case**************************/
 
-
+char makeUpper(char letter){
+    if (letter>=97 && letter<=122) {
+        letter -= 32; 
+    }
+    return letter;
+}
+    
 /********SET KEY**************************************************/
 int setKey(){
     int key;
