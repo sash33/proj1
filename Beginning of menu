@@ -11,13 +11,15 @@ char rotationDec(char letter, int key);
 int setKey();
 char makeUpper(char letter);
 
+int rotNoKeyDec();
+
 int main(){
 int choice=0;
 int key=0;
 printf("WELCOME TO SOME INTERESTING CIPHERS - I HOPE YOU ENJOY!");
 //User input for message into array
-char message[] = "TESTING: !#?";
-char emessage[] = "UFTUJOH: !#?";//encrypted message to be decrypted, maybe decrypt the encripted messsage
+char message[] = "TVU TVAOTH: AOL. KHAH IYVBNOA AV BZ IF AOL IVAOHU ZWPLZ WPUWVPUAZ AOL ";
+
 int size = sizeof(message)-1;     
 
 //Sanitise to make UPPER case
@@ -26,17 +28,16 @@ for(int i=0; i<size;i++){
 }
 //sanitising emessage
 for(int i=0; i<size;i++){                    
-    makeUpper(emessage[i]);
+    makeUpper(message[i]);
 }
-
-
-   
 
 while(choice!=5){
     //printf("\nPlease enter a number to select an option");
-    printf("\n 1- rotation encription.    2- substitution encription.   5- quit");
+    printf("\n**************************************************************************************");
+    printf("\n 1- rotation encription.       2- substitution encription    3- rotation decrypt");
+    printf("\n 4- substitution decryption     5- rotation without key ");
+    printf("\n**************************************************************************************");
     
-
     scanf("%d ", &choice);
     printf("\nYour choice is : %d\n", choice);
 
@@ -59,25 +60,34 @@ while(choice!=5){
             for(int i=0; i<=size; i++){//size of what?
                 printf("%c ", substitutionEnc(message[i]));
             }
+            
             break;
             
-        case 3: //calling rotationDec
-            key = setKey();
+        case 3:; //calling rotationDec
+            printf("enter the key");
+            scanf("%d", &key);
+            //key = 19;//setKey();
             for(int i=0; i<size; i++){
-                if (emessage[i] <= 'Z' && emessage[i] >= 'A') {
-                    printf("%c", rotationEnc(emessage[i], key));
+                if (message[i] <= 'Z' && message[i] >= 'A') {
+                    printf("%c", rotationEnc(message[i], key));
                 }else{
-                    printf("%c", emessage [i]);
+                    printf("%c", message[i]);
                 }  
             }
             break;
             
         case 4: //calling substitutionDec
+        
+        
+        
+            break;
             
+        case 5://rotation dec without key
+        printf("\nThe key is: %d", rotNoKeyDec());
             
             break;
             
-        case 5:
+        case 6:
         return 0;
     }
 }
@@ -175,3 +185,129 @@ switch(letter){
 
 return letter;
 }
+
+/*****************Rotation decription without key************************/
+
+int rotNoKeyDec(){
+//ask user for the message function
+char message[] = "TVU TVAOTH: AOL. KHAH IYVBNOA AV T BZ IF AOL L IVAOHU ZWPLZ WPUWVPUAZ AOL ";
+//scanf
+//scanf("%[^\n]", message);
+char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+int size = sizeof(message)-1;
+int quantityArray[25];
+int sizeCheck=0;
+int times=0;
+int c=0;
+char mostUsedLetter;
+int key;
+char alphaTest='A';
+char engTest[size];
+int i=0;
+int wordCheck = 0;
+char letterTest[] = "ETAOI";
+ 
+    for(int a=1; a<=26;a++){
+       
+        times=0;//should reset to 0...
+       
+        for(int b=0; b<=size; b++){
+            if(message[b] == alphaTest){
+                times++;
+            }
+        }
+   
+    quantityArray[c] = times;
+    printf("\n%d", quantityArray[c]);
+    printf(" %c", alphabet[c]);
+    c++;
+    alphaTest++;
+    }
+    sizeCheck = quantityArray[0];
+ 
+    for(int i=0; i<26;i++){//finding the most used letter
+       if(quantityArray[i]>=sizeCheck && quantityArray[i] != 32){
+          sizeCheck = quantityArray[i];
+           mostUsedLetter = i+'A';
+       }
+    }
+
+printf("\nthe most used letter is:%c", mostUsedLetter);
+ 
+for(int s=0;s<=4;s++){//this runs through each letter in letter test so decrypt the text from the most used letter to the letter test
+key=letterTest[s]-mostUsedLetter; 
+
+printf("\nThe key # being tested is:%d\n", key);
+
+for (i=0; i<size; i++) { 
+    
+    engTest[i] = rotationEnc(message[i], key);;
+    printf("%c", engTest[i]);
+}
+       
+//Look for THE
+//char word[3] = "THE";
+    //printf("the key shift to be tested is: %s", engtest);
+    for(int i=0;i<size;i++){
+ //printf("looking for THE");
+      if(engTest[i]=='T'){//finds THE with white space after
+        i++;
+        //printf("Looking for T");
+        if(engTest[i]=='H'){
+          i++;
+          if(engTest[i]=='E'){
+            i++;
+           //printf("\nfound E");
+          }if(engTest[i]==32/*||check for other white space engTest[i]*/){
+              
+              printf("\nTHE has been found now breaking...");
+              wordCheck++;
+              break;
+          }
+        }
+      }
+   
+    }
+   
+    for(int i=0;i<size;i++){
+      if(engTest[i]=='T'){
+        i++;
+       
+        if(engTest[i]=='O'){
+          i++;
+           
+            if(engTest[i]==32){
+              printf("\nTO has been found now breaking");
+              wordCheck++;
+              break;
+          }
+        }
+      }
+    }
+   
+    for(int i=0;i<size;i++){
+      if(engTest[i]==32){
+        i++;
+       
+        if(engTest[i]=='A'){
+          i++;
+            
+            if(engTest[i]==32){
+              //printf("\nA has been found with whitespaces now breaking...");
+              wordCheck++;
+              break;
+          }
+        }
+      }
+    }
+    if(wordCheck>=2){
+        //printf("\nThe key of: %d is correct!!!", key);
+        return key;
+        break; 
+    }
+    
+    //return would go here
+  //return key;
+  }
+  return key;
+  }
