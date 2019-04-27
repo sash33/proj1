@@ -18,7 +18,7 @@ int main(){
 int choice=0;//this variable is declared will be used to control the menu.
 int key=0; //declares the key variable to store the integer that will be used in various functions.
 
-char message[] = "TVU TVAOTH: AOL. KHAH IYVBNOA AV BZ IF AOL IVAOHU ZWPLZ WPUWVPUAZ AOL ";//array contains the message to be used in each function.
+char message[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";//array contains the message to be used in each function.
 
 int size = sizeof(message)-1;//calculates the size of the message array. This is used to control for loops.
 
@@ -61,9 +61,10 @@ while(choice!=5){//while loop repeats the menu after each selection until the us
             break;
             
         case 3:; //calling rotationDec
-            printf("enter the key"); //Asks the user to enter a key
-            scanf("%d", &key);
-            //key = 19;//setKey();
+            //printf("enter the key"); //Asks the user to enter a key
+            //scanf("%d", &key);
+            //key = 19;//
+            key=setKey();
             for(int i=0; i<size; i++){
                 if (message[i] <= 'Z' && message[i] >= 'A') {  //if the index value is a letter, the index value is passed into the function
                     printf("%c", rotationEnc(message[i], key));
@@ -109,7 +110,8 @@ This function relies on the platform runing it being able to enter a key inside 
 int setKey(){
     int key;
     printf("\nEnter key: ");
-    scanf("%d ", &key);
+    scanf("%d ", &key);//need the & symbol?
+    printf("the key entered was: %d", key);
 return key;
 }
 
@@ -174,34 +176,34 @@ The function can only take char values and each key must be manually entered ins
 The function must be run in a for loop to substitute a full text
 */
 char substitutionEnc(char letter){
-    
+char k[26] ="BCDEFGHIJKLMNOPQRSTUVWXYZA";
 switch(letter){//the letter is used in the switch statement to select the key that it is assigned to
-    case 65: letter = 66; break; //each case contains every letter in the alphabet from A(65) to Z(90)
-    case 66: letter = 67; break; //if the case is matches the letter, then the letter is changed to the pre-assigned key
-    case 67: letter = 68; break;//UPDATE KEY TO LETTERS!!???
-    case 68: letter = 69; break;
-    case 69: letter = 70; break;
-    case 70: letter = 71; break;
-    case 71: letter = 72; break;
-    case 72: letter = 73; break;
-    case 73: letter = 74; break;
-    case 74: letter = 75; break;
-    case 75: letter = 76; break;
-    case 76: letter = 77; break;
-    case 77: letter = 89; break;
-    case 78: letter = 69; break;
-    case 79: letter = 69; break;
-    case 80: letter = 70; break;
-    case 81: letter = 70; break;
-    case 82: letter = 70; break;
-    case 83: letter = 67; break;
-    case 84: letter = 89; break;
-    case 85: letter = 87; break;
-    case 86: letter = 80; break;
-    case 87: letter = 89; break;
-    case 88: letter = 90; break;
-    case 89: letter = 89; break;
-    case 90: letter = 69; break;
+    case 65: letter = k[0]; break; //each case contains every letter in the alphabet from A(65) to Z(90)
+    case 66: letter = k[1]; break; //if the case is matches the letter, then the letter is changed to the pre-assigned key
+    case 67: letter = k[2]; break;//UPDATE KEY TO LETTERS!!???
+    case 68: letter = k[3]; break;
+    case 69: letter = k[4]; break;
+    case 70: letter = k[5]; break;
+    case 71: letter = k[6]; break;
+    case 72: letter = k[7]; break;
+    case 73: letter = k[8]; break;
+    case 74: letter = k[9]; break;
+    case 75: letter = k[10]; break;
+    case 76: letter = k[11]; break;
+    case 77: letter = k[12]; break;
+    case 78: letter = k[13]; break;
+    case 79: letter = k[14]; break;
+    case 80: letter = k[15]; break;
+    case 81: letter = k[16]; break;
+    case 82: letter = k[17]; break;
+    case 83: letter = k[18]; break;
+    case 84: letter = k[19]; break;
+    case 85: letter = k[20]; break;
+    case 86: letter = k[21]; break;
+    case 87: letter = k[22]; break;
+    case 88: letter = k[23]; break;
+    case 89: letter = k[24]; break;
+    case 90: letter = k[25]; break;
 } 
 
 return letter;
