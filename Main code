@@ -21,6 +21,7 @@ int main(){
 int choice=0;//this variable is declared will be used to control the menu.
 int key=0; //declares the key variable to store the integer that will be used in various functions.
 
+//CHANGE this array message to enter the text for every task exccept rotation decryption without a key, where the text is entered in the function!
 char message[] = "SJSFMPCRM WG O USBWIG. PIH WT MCI XIRUS O TWGV PM WHG OPWZWHM HC QZWAP O HFSS, WH KWZZ ZWJS WHG KVCZS ZWTS PSZWSJWBU HVOH WH WG GHIDWR. - OZPSFH SWBGHSWB";//array contains the message to be used in each function.
 
 int size = sizeof(message)-1;//calculates the size of the message array. This is used to control for loops.
