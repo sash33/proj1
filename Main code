@@ -12,7 +12,7 @@ char rotationEnc(char letter, int key);
 char rotationDec(char letter, int key);
 char substitutionEnc(char letter);
 char substitutionDec(char letter);
-int rotNoKeyDec(char *message);
+void rotNoKeyDec(char *message);
 
 int setKey();
 char makeUpper(char letter);
@@ -23,7 +23,7 @@ int choice=0;//this variable declared will be used to control the menu.
 int key=0; //declares the key variable to store the integer that will be used in various functions.
 
 //CHANGE this array message to enter the text for every task exccept rotation decryption without a key, where the text is entered in the function!
-char message[] = "SJSFMPCRM WG O USBWIG. PIH WT MCI XIRUS O TWGV PM WHG OPWZWHM HC QZWAP O HFSS, WH KWZZ ZWJS WHG KVCZS ZWTS PSZWSJWBU HVOH WH WG GHIDWR. - OZPSFH SWBGHSWB";//array contains the message to be used in each function.
+char message[] = "SJSFMPCRM WG O USBWIG. PIH WT MCI XIRUS O TWGV PM WHG OPWZWHM HC QZWAP O HFSS, WH KWZZ ZWJS WHG KVCZS ZWTS PSZWSJWBU HVOH WH WG GHIDWR. - OZPSFH SWBGHSWB ";//array contains the message to be used in each function.
 
 int size = sizeof(message)-1;//calculates the size of the message array. This is used to control for loops.
 
@@ -87,7 +87,7 @@ while(choice!=5){//while loop repeats the menu after each selection until the us
             break;
             
         case 5://rotation dec without key
-        printf("\nThe correct key is: %d", rotNoKeyDec(message)); //prints the correct key that the function finds
+        rotNoKeyDec(message);
             
             break;
             
@@ -270,8 +270,9 @@ a new letter instead of 'E', 'A', for example.
 Some limitations of the function are that the correct key may not be found because if none of the words that are tested for are in the 
 text tested, the function will continue to search. Further, the message must be entered into the function itself.
 */
-int rotNoKeyDec(char *message){
-
+void rotNoKeyDec(char *message){
+//char message[] = "SJSFMPCRM WG O USBWIG. PIH WT MCI XIRUS O TWGV PM WHG OPWZWHM HC QZWAP O HFSS, WH KWZZ ZWJS WHG KVCZS ZWTS PSZWSJWBU HVOH WH WG GHIDWR. - OZPSFH SWBGHSWB ";
+printf("%s", message);
 char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //alphabet array used for debugging
 int size = strlen(message); //calculates size of the message array
 int quantityArray[25]; //array stores how many times each letter of the alphabet is used in the message array
@@ -286,13 +287,13 @@ int i=0; //increments the main for loop
 int wordCheck = 0; //used to count how many english word tests have been completed
 char letterTest[] = "ETAOI"; //this array is used to store each letter that will be assumed to be the most prevalent in the english decrypted text
  
-    for(int a=1; a<=26;a++){//runs for each letter of the alphabet
+    for(int a=1; a<=26; a++){//runs for each letter of the alphabet
        
         times=0;//should reset to 0...
        
         for(int b=0; b<=size; b++){
-            if(message[b] == alphaTest){//if the letter is found in the alphabet
-                times++;//increment the times variable
+            if(message[b] == alphaTest){//if the letter is found in the alphabet...
+                times++;    //increment the times variable
             }
         }
    
@@ -328,12 +329,13 @@ for (i=0; i<size; i++) { //increments for the size of the message
         engTest[i] = message[i];
     }
     printf("%c", engTest[i]);
-}
-
+    
 }
        
 //Look for THE
+
     for(int i=0;i<size;i++){
+        
       if(engTest[i]=='T'){//searches for T
         i++; //inncrements index to search for the next one along the array
         if(engTest[i]=='H'){//searches for H
@@ -359,7 +361,7 @@ for (i=0; i<size; i++) { //increments for the size of the message
           i++;
            
             if(engTest[i]==32){ //searches for white space
-              printf("\nTO has been found now breaking");
+              //printf("\nTO has been found now breaking");  print statement for debugging
               wordCheck++; //increments word check to indicate the test has been successful
               break;
           }
@@ -375,7 +377,7 @@ for (i=0; i<size; i++) { //increments for the size of the message
           i++;
            
             if(engTest[i]==32){ //searches for white space
-              printf("\nBE has been found now breaking");
+              //printf("\nBE has been found now breaking");  //print statement for debugging
               wordCheck++; //increments word check to indicate the test has been successful
               break;
           }
@@ -390,7 +392,7 @@ for (i=0; i<size; i++) { //increments for the size of the message
           i++;
             
             if(engTest[i]==32){
-              printf("\nA has been found now breaking");
+              //printf("\nA has been found now breaking"); //print statement for debugging
               wordCheck++;
               break;
           }
@@ -400,9 +402,11 @@ for (i=0; i<size; i++) { //increments for the size of the message
     
     if(wordCheck>=2){ //if two or more tests have been passed, the key is correct
         //printf("\nThe key of: %d is correct!!!", key);
-        return key;//return the key 
+        //return key;//return the key 
+        break;
     }
     
- 
-return key;
+}
+printf("\nThe decrypted text^\n");
+
 }
