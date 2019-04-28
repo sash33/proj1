@@ -20,7 +20,7 @@ int main(){
 int choice=0;//this variable is declared will be used to control the menu.
 int key=0; //declares the key variable to store the integer that will be used in various functions.
 
-char message[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";//array contains the message to be used in each function.
+char message[] = "RZRBGZ";//array contains the message to be used in each function.
 
 int size = sizeof(message)-1;//calculates the size of the message array. This is used to control for loops.
 
@@ -114,7 +114,7 @@ int setKey(){
     int key;
     printf("\nEnter key: ");
     scanf("%d ", &key);//need the & symbol?
-    printf("the key entered was: %d", key);
+    printf("the key entered was: %d\n", key);
 return key;
 }
 
@@ -179,7 +179,7 @@ The function can only take char values and each key must be manually entered ins
 The function must be run in a for loop to substitute a full text
 */
 char substitutionEnc(char letter){
-char k[26] ="BCDEFGHIJKLMNOPQRSTUVWXYZA";
+char k[26] ="BCDEFGHIJKLMNOPQRSTUVWXYZA"; //this array is used to select and modify each key for every letter in the alphabet. Array index 0 will be the letter that A becomes.
 switch(letter){//the letter is used in the switch statement to select the key that it is assigned to
     case 65: letter = k[0]; break; //each case contains every letter in the alphabet from A(65) to Z(90)
     case 66: letter = k[1]; break; //if the case is matches the letter, then the letter is changed to the pre-assigned key
@@ -381,6 +381,6 @@ for (i=0; i<size; i++) { //increments for the size of the message
         break; 
     }
     
-  }
-  return key;
-  }
+ }
+return key;
+}
