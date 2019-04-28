@@ -6,6 +6,10 @@ The code can run various functions performing encryption and decryption tasks.
 The menu indicates which number shoudl entered to select different functions of the program,
 for example to select rotation encryption, user should enter: 1
 The flow of the program is controlled through a menu that is run in a while loop with different switch cases calling different functions.
+
+NOTE: WHEN RUNNING IN TERMINAL USER INPUT IS NOT CORRECTLY ENTERED INTO THE PROGRAM, USING AN INPUT FILE AND RUNNING USING RUN COMMAND WORKS.
+-to make terminal work, key integer needs to be entered into the console the number before program asks or it.
+E.g - enter task number and don't press enter, then enter key then press enter.
 */
 
 char rotationEnc(char letter, int key);
@@ -48,7 +52,7 @@ while(choice!=5){//while loop repeats the menu after each selection until the us
         case 1: //calling rotationEnc function
             key = setKey();//calls the setKet funciton to store an integer in the variable key
             
-            for(int i=0; i<size;i++) { //runs the loop as many times as there are indexes in the message array
+            for(int i=0; i<size; i++) { //runs the loop as many times as there are indexes in the message array
                     
                 if (message[i] <= 'Z' && message[i] >= 'A') { //executes if the index of message is between A and Z. 
                     printf("%c", rotationEnc(message[i], key)); 
@@ -66,11 +70,9 @@ while(choice!=5){//while loop repeats the menu after each selection until the us
             break;
             
         case 3: //calling rotationDec
-            //printf("enter the key"); //Asks the user to enter a key
-            //scanf("%d", &key);
-            //key = 19;//
-            key=setKey();
-            for(int i=0; i<size; i++){
+            key = setKey();
+            
+            for(int i=0 ; i<size; i++){
                 if (message[i] <= 'Z' && message[i] >= 'A') {  //if the index value is a letter, the index value is passed into the function
                     printf("%c", rotationEnc(message[i], key));
                 }else{
@@ -116,7 +118,7 @@ This function relies on the platform runing it being able to enter a key inside 
 int setKey(){
     int key;
     printf("\nEnter key: ");
-    scanf("%d ", &key);//need the & symbol?
+    scanf("%d", &key);//need the & symbol?
     printf("the key entered was: %d\n", key);
 return key;
 }
@@ -181,7 +183,7 @@ The function substitutes a given letter with a new set letter for each position 
 The function can only take char values and each key must be manually entered inside the function itself.
 The function must be run in a for loop to substitute a full text
 */
-char substitutionEnc(char letter){
+char substitutionEnc(char letter){              //ENTER KEYS INTO ARRAY HERE
 char k[26] ="BCDEFGHIJKLMNOPQRSTUVWXYZA"; //this array is used to select and modify each key for every letter in the alphabet. Array index 0 will be the letter that A becomes.
 switch(letter){//the letter is used in the switch statement to select the key that it is assigned to
     case 65: letter = k[0]; break; //each case contains every letter in the alphabet from A(65) to Z(90)
@@ -220,7 +222,7 @@ return letter;
 
 char substitutionDec(char letter){
 
-char k[26] ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+char k[26] ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";  /ENTER KEYS INTO ARRAY HERE
 
 switch(letter){//the letter is used in the switch statement to select the key that it is assigned to
     case 65: letter = k[0]; break; //each case contains every letter in the alphabet from A(65) to Z(90)
