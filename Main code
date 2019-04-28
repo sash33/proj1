@@ -23,7 +23,7 @@ int choice=0;//this variable declared will be used to control the menu.
 int key=0; //declares the key variable to store the integer that will be used in various functions.
 
 //CHANGE this array message to enter the text for every task exccept rotation decryption without a key, where the text is entered in the function!
-char message[] = "SJSFMPCRM WG O USBWIG. PIH WT MCI XIRUS O TWGV PM WHG OPWZWHM HC QZWAP O HFSS, WH KWZZ ZWJS WHG KVCZS ZWTS PSZWSJWBU HVOH WH WG GHIDWR. - OZPSFH SWBGHSWB ";//array contains the message to be used in each function.
+char message[] = "TVU TVAOTH: AOL KHAH IYVBNOA AV BZ IF AOL IVAOHU ZWPLZ WPUWVPUAZ AOL LEHJA SVJHAPVU VM AOL LTWLYVY'Z ULD IHAASL ZAHAPVU. DL HSZV RUVD AOHA AOL DLHWVU ZFZALTZ VM AOPZ KLHAO ZAHY HYL UVA FLA VWLYHAPVUHS. DPAO AOL PTWLYPHS MSLLA ZWYLHK AOYVBNOVBA AOL NHSHEF PU H CHPU LMMVYA AV LUNHNL BZ, PA PZ YLSHAPCLSF BUWYVALJALK. IBA TVZA PTWVYAHUA VM HSS, DL'CL SLHYULK AOHA AOL LTWLYVY OPTZLSM PZ WLYZVUHSSF VCLYZLLPUN AOL MPUHS ZAHNLZ VM AOL JVUZAYBJAPVU VM AOPZ KLHAO ZAHY. THUF IVAOHUZ KPLK AV IYPUN BZ AOPZ PUMVYTHAPVU. ";//array contains the message to be used in each function.
 
 int size = sizeof(message)-1;//calculates the size of the message array. This is used to control for loops.
 
@@ -271,9 +271,9 @@ Some limitations of the function are that the correct key may not be found becau
 text tested, the function will continue to search. Further, the message must be entered into the function itself.
 */
 void rotNoKeyDec(char *message){
-//char message[] = "SJSFMPCRM WG O USBWIG. PIH WT MCI XIRUS O TWGV PM WHG OPWZWHM HC QZWAP O HFSS, WH KWZZ ZWJS WHG KVCZS ZWTS PSZWSJWBU HVOH WH WG GHIDWR. - OZPSFH SWBGHSWB ";
-printf("%s", message);
-char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //alphabet array used for debugging
+
+
+//char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //alphabet array used for debugging
 int size = strlen(message); //calculates size of the message array
 int quantityArray[25]; //array stores how many times each letter of the alphabet is used in the message array
 int sizeCheck=0; //array to find the highest number in the message array 
@@ -298,8 +298,8 @@ char letterTest[] = "ETAOI"; //this array is used to store each letter that will
         }
    
         quantityArray[c] = times;//stores times in quantityarray to compare each index of quantityarray later
-        printf("\n%d", quantityArray[c]);//for debugging:
-        printf(" %c", alphabet[c]);
+        //printf("\n%d", quantityArray[c]);//for debugging
+        //printf(" %c", alphabet[c]);//alphabet printed to help debug
         c++; //increment quantity array to store next times in the next index
         alphaTest++; //increment alphabet test to test for the next letter in the alphabet
     }
@@ -344,7 +344,7 @@ for (i=0; i<size; i++) { //increments for the size of the message
             i++;
                 }if(engTest[i]==32/*||check for other white space engTest[i]*/){//searches for a white space
               
-              printf("\nTHE has been found now breaking...");
+              //printf("\nTHE has been found now breaking..."); for debugging
               wordCheck++;//test successful if code gets here so increment wordCheck
               break; //NEED THE BREAK?
           }
