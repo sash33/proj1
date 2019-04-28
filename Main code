@@ -1,5 +1,6 @@
 #include<stdio.h>
-#include<unistd.h>//included to use sizeof function to find size of an array
+#include<unistd.h>  //included to use sizeof function to find size of an array
+#include<string.h>
 /*By Sascha Keats  c3305350
 The code can run various functions performing encryption and decryption tasks.
 The menu indicates which number shoudl entered to select different functions of the program,
@@ -11,14 +12,14 @@ char rotationEnc(char letter, int key);
 char rotationDec(char letter, int key);
 char substitutionEnc(char letter);
 char substitutionDec(char letter);
-int rotNoKeyDec();
+int rotNoKeyDec(char *message);
 
 int setKey();
 char makeUpper(char letter);
 
 
 int main(){
-int choice=0;//this variable is declared will be used to control the menu.
+int choice=0;//this variable declared will be used to control the menu.
 int key=0; //declares the key variable to store the integer that will be used in various functions.
 
 //CHANGE this array message to enter the text for every task exccept rotation decryption without a key, where the text is entered in the function!
@@ -86,7 +87,7 @@ while(choice!=5){//while loop repeats the menu after each selection until the us
             break;
             
         case 5://rotation dec without key
-        printf("\nThe correct key is: %d", rotNoKeyDec()); //prints the correct key that the function finds
+        printf("\nThe correct key is: %d", rotNoKeyDec(message)); //prints the correct key that the function finds
             
             break;
             
@@ -185,7 +186,7 @@ char k[26] ="BCDEFGHIJKLMNOPQRSTUVWXYZA"; //this array is used to select and mod
 switch(letter){//the letter is used in the switch statement to select the key that it is assigned to
     case 65: letter = k[0]; break; //each case contains every letter in the alphabet from A(65) to Z(90)
     case 66: letter = k[1]; break; //if the case is matches the letter, then the letter is changed to the pre-assigned key
-    case 67: letter = k[2]; break;//UPDATE KEY TO LETTERS!!???
+    case 67: letter = k[2]; break;
     case 68: letter = k[3]; break;
     case 69: letter = k[4]; break;
     case 70: letter = k[5]; break;
@@ -224,7 +225,7 @@ char k[26] ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 switch(letter){//the letter is used in the switch statement to select the key that it is assigned to
     case 65: letter = k[0]; break; //each case contains every letter in the alphabet from A(65) to Z(90)
     case 66: letter = k[1]; break; //if the case is matches the letter, then the letter is changed to the pre-assigned key
-    case 67: letter = k[2]; break;//UPDATE KEY TO LETTERS!!???
+    case 67: letter = k[2]; break;
     case 68: letter = k[3]; break;
     case 69: letter = k[4]; break;
     case 70: letter = k[5]; break;
@@ -257,8 +258,8 @@ return letter;
 
 /*****************Rotation decription without key************************/
 
-/*The rotation without a key takes no input as the text array is hard coded inside the function.
-The function return an integer key.
+/*The rotation without a key takes a reference to the message in the main body.
+The function returns an integer key.
 The function first calculates which letter is the most prevalent in the array, it then assumes a letter that the most common letter could be.
 It calculates a key based on the distance of the most common letter and the assumed decrypted letter. 
 For example, it calculates the distance from E that the most used encrypted letter is.
@@ -269,13 +270,10 @@ a new letter instead of 'E', 'A', for example.
 Some limitations of the function are that the correct key may not be found because if none of the words that are tested for are in the 
 text tested, the function will continue to search. Further, the message must be entered into the function itself.
 */
-int rotNoKeyDec(){
-//ask user for the message function
-char message[] = "SJSFMPCRM WG O USBWIG. PIH WT MCI XIRUS O TWGV PM WHG OPWZWHM HC QZWAP O HFSS, WH KWZZ ZWJS WHG KVCZS ZWTS PSZWSJWBU HVOH WH WG GHIDWR. - OZPSFH SWBGHSWB "; //message is entered here
-//scanf
-//scanf("%[^\n]", message);
+int rotNoKeyDec(char *message){
+
 char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //alphabet array used for debugging
-int size = sizeof(message)-1; //calculates size of the message array
+int size = strlen(message); //calculates size of the message array
 int quantityArray[25]; //array stores how many times each letter of the alphabet is used in the message array
 int sizeCheck=0; //array to find the highest number in the message array 
 int times=0;
@@ -322,9 +320,16 @@ key=letterTest[s]-mostUsedLetter; //the key is calculated by finding the distanc
 printf("\nThe key # being tested is:%d\n", key);
 
 for (i=0; i<size; i++) { //increments for the size of the message
-    
-    engTest[i] = rotationEnc(message[i], key);;//why two semi-colons!!!!!!!
+
+    if(engTest[i]>='A' && engTest[i]<='Z'){
+        
+        engTest[i] = rotationEnc(message[i], key);//why two semi-colons!!!!!!!
+    }else{
+        engTest[i] = message[i];
+    }
     printf("%c", engTest[i]);
+}
+
 }
        
 //Look for THE
@@ -385,7 +390,7 @@ for (i=0; i<size; i++) { //increments for the size of the message
           i++;
             
             if(engTest[i]==32){
-              printf("\nA has been found with whitespaces now breaking...");
+              printf("\nA has been found now breaking");
               wordCheck++;
               break;
           }
@@ -396,9 +401,8 @@ for (i=0; i<size; i++) { //increments for the size of the message
     if(wordCheck>=2){ //if two or more tests have been passed, the key is correct
         //printf("\nThe key of: %d is correct!!!", key);
         return key;//return the key 
-        break; 
     }
     
- }
+ 
 return key;
 }
