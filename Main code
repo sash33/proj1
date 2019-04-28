@@ -101,6 +101,10 @@ while(choice!=5){//while loop repeats the menu after each selection until the us
 return 0; 
 } 
 /************Make the message upper case**************************/
+/*
+Function takes a character as input and return a character as output
+The function runs for the size of the array and converts any lowercase letters from a to z with uppercase versions
+*/
 
 char makeUpper(char letter){ //function prototype
     if (letter>=97 && letter<=122) {  //if the letter is not an upper case letter...
