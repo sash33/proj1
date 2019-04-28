@@ -11,16 +11,17 @@ char rotationEnc(char letter, int key);
 char rotationDec(char letter, int key);
 char substitutionEnc(char letter);
 char substitutionDec(char letter);
+int rotNoKeyDec();
 
 int setKey();
 char makeUpper(char letter);
-int rotNoKeyDec();
+
 
 int main(){
 int choice=0;//this variable is declared will be used to control the menu.
 int key=0; //declares the key variable to store the integer that will be used in various functions.
 
-char message[] = "RZRBGZ";//array contains the message to be used in each function.
+char message[] = "SJSFMPCRM WG O USBWIG. PIH WT MCI XIRUS O TWGV PM WHG OPWZWHM HC QZWAP O HFSS, WH KWZZ ZWJS WHG KVCZS ZWTS PSZWSJWBU HVOH WH WG GHIDWR. - OZPSFH SWBGHSWB";//array contains the message to be used in each function.
 
 int size = sizeof(message)-1;//calculates the size of the message array. This is used to control for loops.
 
@@ -62,7 +63,7 @@ while(choice!=5){//while loop repeats the menu after each selection until the us
             
             break;
             
-        case 3:; //calling rotationDec
+        case 3: //calling rotationDec
             //printf("enter the key"); //Asks the user to enter a key
             //scanf("%d", &key);
             //key = 19;//
@@ -269,7 +270,7 @@ text tested, the function will continue to search. Further, the message must be 
 */
 int rotNoKeyDec(){
 //ask user for the message function
-char message[] = "TVU TVAOTH: AOL. KHAH IYVBNOA AV T BZ IF AOL L IVAOHU ZWPLZ WPUWVPUAZ AOL "; //message is entered here
+char message[] = "SJSFMPCRM WG O USBWIG. PIH WT MCI XIRUS O TWGV PM WHG OPWZWHM HC QZWAP O HFSS, WH KWZZ ZWJS WHG KVCZS ZWTS PSZWSJWBU HVOH WH WG GHIDWR. - OZPSFH SWBGHSWB "; //message is entered here
 //scanf
 //scanf("%[^\n]", message);
 char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //alphabet array used for debugging
@@ -360,6 +361,21 @@ for (i=0; i<size; i++) { //increments for the size of the message
       }
     }
    
+   for(int i=0;i<size;i++){
+      if(engTest[i]=='B'){ //Finds T
+        i++; //increments to check next index
+       
+        if(engTest[i]=='E'){ //finds O
+          i++;
+           
+            if(engTest[i]==32){ //searches for white space
+              printf("\nBE has been found now breaking");
+              wordCheck++; //increments word check to indicate the test has been successful
+              break;
+          }
+        }
+      }
+    }
     for(int i=0;i<size;i++){
       if(engTest[i]==32){ 
         i++;
@@ -368,13 +384,14 @@ for (i=0; i<size; i++) { //increments for the size of the message
           i++;
             
             if(engTest[i]==32){
-              //printf("\nA has been found with whitespaces now breaking...");
+              printf("\nA has been found with whitespaces now breaking...");
               wordCheck++;
               break;
           }
         }
       }
     }
+    
     if(wordCheck>=2){ //if two or more tests have been passed, the key is correct
         //printf("\nThe key of: %d is correct!!!", key);
         return key;//return the key 
