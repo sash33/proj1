@@ -37,7 +37,7 @@ for(int i=0; i<size;i++){ //for loop runs as many times as the indexes in the me
 }
 
 
-while(choice!=5){//while loop repeats the menu after each selection until the user enters '6, which exits the loop
+while(choice!=6){//while loop repeats the menu after each selection until the user enters '6, which exits the loop
     //printf("\nPlease enter a number to select an option");
     printf("\n**************************************************************************************");
     printf("\n 1- rotation encription.       2- substitution encription    3- rotation decrypt");
