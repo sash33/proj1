@@ -27,7 +27,7 @@ int choice=0;//this variable declared will be used to control the menu.
 int key=0; //declares the key variable to store the integer that will be used in various functions.
 
 //CHANGE this array message to enter the text for every task exccept rotation decryption without a key, where the text is entered in the function!
-char message[] = "";//array contains the message to be used in each function.
+char message[] = " ";//array contains the message to be used in each function.
 
 int size = sizeof(message)-1;//calculates the size of the message array. This is used to control for loops.
 
@@ -185,6 +185,7 @@ The function must be run in a for loop to substitute a full text
 */
 char substitutionEnc(char letter){              //ENTER KEYS INTO ARRAY HERE
 char k[26] ="BCDEFGHIJKLMNOPQRSTUVWXYZA"; //this array is used to select and modify each key for every letter in the alphabet. Array index 0 will be the letter that A becomes.
+
 switch(letter){//the letter is used in the switch statement to select the key that it is assigned to
     case 65: letter = k[0]; break; //each case contains every letter in the alphabet from A(65) to Z(90)
     case 66: letter = k[1]; break; //if the case is matches the letter, then the letter is changed to the pre-assigned key
@@ -219,7 +220,11 @@ return letter;
 
 
 /*****Function for substitution encription***********************/
-
+/*The function is similar to substitution encryption, it takes a char as input and returns a char
+ *The function uses an array to implement 26 keys to change each letter of the alphabet that can be entered.
+ * 
+ * 
+ */
 char substitutionDec(char letter){
 
 char k[26] ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";  //ENTER KEYS INTO ARRAY HERE
