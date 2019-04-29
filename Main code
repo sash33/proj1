@@ -101,10 +101,6 @@ while(choice!=5){//while loop repeats the menu after each selection until the us
 return 0; 
 } 
 /************Make the message upper case**************************/
-/*
-Function takes a character as input and return a character as output
-The function runs for the size of the array and converts any lowercase letters from a to z with uppercase versions
-*/
 
 char makeUpper(char letter){ //function prototype
     if (letter>=97 && letter<=122) {  //if the letter is not an upper case letter...
@@ -291,7 +287,7 @@ char alphaTest='A'; // variable incremented to test each letter of the alphabet
 char engTest[size]; //stores the rotated text to then be tested for english words
 int i=0; //increments the main for loop 
 int wordCheck = 0; //used to count how many english word tests have been completed
-char letterTest[] = "ETAOI"; //this array is used to store each letter that will be assumed to be the most prevalent in the english decrypted text
+char letterTest[] = "ETAOINS"; //this array is used to store each letter that will be assumed to be the most prevalent in the english decrypted text
  
     for(int a=1; a<=26; a++){//runs for each letter of the alphabet
        
@@ -321,7 +317,7 @@ char letterTest[] = "ETAOI"; //this array is used to store each letter that will
 
 printf("\nthe most used letter is:%c", mostUsedLetter);
  
-for(int s=0;s<=4;s++){//this runs through each letter in letterTest to decrypt the text from the most used encrypted letter to the letter test which is assumed
+for(int s=0;s<=7;s++){//this runs through each letter in letterTest to decrypt the text from the most used encrypted letter to the letter test which is assumed
 key=letterTest[s]-mostUsedLetter; //the key is calculated by finding the distance between letterTest and mostUsedLetter (in encrypted text)
 
 printf("\nThe key # being tested is:%d\n", key);
